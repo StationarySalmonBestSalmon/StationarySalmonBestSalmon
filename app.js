@@ -2,6 +2,10 @@ var express = require('express'),
   mongoose = require('mongoose'),
   app = express();
 
+app.get('/', function (req, res, next) {
+  res.sendStatus(200);
+})
+
 app.get('/users', function (req, res, next) {
   res.send();
 });
