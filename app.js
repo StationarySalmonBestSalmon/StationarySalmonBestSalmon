@@ -25,3 +25,5 @@ app.get('/groups', function (req, res, next) {
 app.post('/groups', function (req, res, next) {
   res.sendStatus(200);
 });
+
+app.listen(8000);
