@@ -35,4 +35,3 @@ app.config(function($stateProvider, $urlRouterProvider) {
       templateUrl: '../views/signup.html'
     });
 });
-
