@@ -1,0 +1,20 @@
+<!-- event name -->
+<h1>{{ eventName }}</h1>
+<!-- group -->
+<p> Group: {{ group }}</p>
+<!-- creator -->
+<p>Posted by: {{ creator }}</p>
+<!-- description -->
+<p class="description">{{ eventDescription }}</p>
+<!-- votes -->
+<p class="votes">{{ votes }}</p>
+<!-- comment form -->
+<input type="text" placeholder="Add comment...">
+<input type="submit" value="Submit">
+<!-- comments -->
+<section class="comments">
+  <div class="comment" ng-repeat="comment in comments">
+    <span class="username">{{ comment.creator.username }}</span>
+    <span class="content">{{ comment.content }}</span>
+  </div>
+</section>
