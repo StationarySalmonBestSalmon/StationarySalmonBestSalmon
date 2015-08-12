@@ -45,6 +45,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
     })
     .state('signup', {
       url: '/signup',
-      templateUrl: '../views/signup.html'
+      templateUrl: '../views/signup.html',
+      controller: 'FormCtrl'
     });
 });

@@ -33,7 +33,8 @@ Users Route:
 
   POST Sample:
   {
-    username: "USERNAME"
+    username: "USERNAME",
+    password: "PASSWORD"
   }
 
 Groups Route
