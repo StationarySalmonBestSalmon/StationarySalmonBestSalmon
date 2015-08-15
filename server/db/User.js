@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
-var bcrypt = require('bcrypt-nodejs');
+var bcrypt   = require('bcrypt-nodejs');
+var Q        = require('q');
 var SALT_WORK_FACTOR = 8;
 
 var UserSchema = new mongoose.Schema({
@@ -11,17 +12,28 @@ var UserSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  groups: [{
-    type : mongoose.Schema.Types.ObjectId,
-    ref: 'Group'
-  }],
-  salt: {
-    type: String
-  }
+  salt: String,
+  groups: [{ 
+      type : mongoose.Schema.Types.ObjectId, 
+      ref: 'Group' 
+    }]
 });
 
-// TODO: save hashed user passwords
-// autogenerate hashed pword
+UserSchema.methods.comparePassword = function(submittedPassword) {
+  var deferred = Q.defer();
+  var storedPassword = this.password;
+  bcrypt.compare(submittedPassword, storedPassword, function(err, matchResult) {
+    if (err) {
+      deferred.reject(err);
+    } else {
+      deferred.resolve(matchResult);
+    }
+  });
+
+  return deferred.promise;
+};
+
+
 UserSchema.pre('save', function (next) {
   var user = this;
 
