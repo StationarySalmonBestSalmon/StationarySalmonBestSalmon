@@ -6,7 +6,6 @@ app
         var data = response.data;
         data.groupSize = data.group.members.length;
         $scope.data = data;
-        $scope.event = {};
         $scope.event = data;
         $scope.user_id = $cookies.get('user_id');
 
@@ -18,6 +17,8 @@ app
           });
         });
       });
+
+      setTimeout(function () {console.log($scope.event)}, 2000);
     };
 
     $scope.postComment = function(){
@@ -76,4 +77,5 @@ app
     };
 
     populateEventData();
+
   }]);
