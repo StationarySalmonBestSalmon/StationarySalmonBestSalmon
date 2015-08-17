@@ -1,25 +1,25 @@
 app.
-  controller('groupCtrl', ['$scope', '$stateParams', '$cookies', '$window', 'getGroups','UserService', 
-    function ($scope, $stateParams, $cookies, $window, getGroups, UserService) {
-    
+  controller('groupCtrl', ['$scope', '$stateParams', '$cookies', '$window', 'ElectEventAPI',
+    function ($scope, $stateParams, $cookies, $window, ElectEventAPI) {
     var contains = function (array, property, target) {
-      return array.reduce(function (prev, curr) {
-        return prev ? prev : (curr[property] === target);
-      }, false);
+      for (var i = 0, arrayLength = array.length; i < arrayLength; i++) {
+        if (array[i][property] === target) return true;
+      }
+      return false;
     };
 
-    getGroups.getGroup($stateParams.id).then(function (response) {
-
+    ElectEventAPI.getGroup($stateParams.id).then(function (response) {
       $scope.data = response.data;
       $scope.isInGroup = contains($scope.data.members, '_id', $cookies.get('user_id'));
+
       $scope.joinGroup = function () {
-        getGroups.joinGroup($stateParams.id);
+        ElectEventAPI.joinGroup($stateParams.id);
         $window.location.reload();
       };
 
       // Populate the creator field
       $scope.data.events.forEach(function(event){
-        UserService.get(event.creator).then(function(response){
+        ElectEventAPI.getUser(event.creator).then(function(response){
           var user = response.data;
           event.creator = user.username;
         });

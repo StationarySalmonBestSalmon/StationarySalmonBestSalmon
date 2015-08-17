@@ -1,9 +1,9 @@
-app.controller('FormCtrl', ['$scope', 'FormService', '$location', '$cookies', '$rootScope', '$window',
-  function($scope, FormService, $location, $cookies, $rootScope, $window) {
+app.controller('FormCtrl', ['$scope', '$location', '$cookies', '$rootScope', '$window', 'ElectEventAPI',
+  function($scope, $location, $cookies, $rootScope, $window, ElectEventAPI) {
   $scope.user = {};
   $scope.signup = function() {
     var user = $scope.user;
-    FormService.signup(user).then(function(data) {
+    ElectEventAPI.signup(user).then(function(data) {
       $cookies.put('token', data.token);
       //$cookies.put('user', $scope.user.username);
       $cookies.put('user_id', data.user_id);

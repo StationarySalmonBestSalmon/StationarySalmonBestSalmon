@@ -1,4 +1,4 @@
-app.service('electEventAPI', ['$http', '$cookies', function ($http, $cookies) {
+app.service('ElectEventAPI', ['$http', '$cookies', function ($http, $cookies) {
 
   this.getComment = function (commentId) {
     return $http.get('api/comments/' + commentId);
@@ -20,7 +20,7 @@ app.service('electEventAPI', ['$http', '$cookies', function ($http, $cookies) {
     return $http.put('api/events/', data);
   };
 
-  this.createEvent = function (newEvent) {
+  this.postEvent = function (newEvent) {
     return $http.post('api/events/', newEvent)
       .then(function (response) {
         console.log('successfully added event');
@@ -60,7 +60,7 @@ app.service('electEventAPI', ['$http', '$cookies', function ($http, $cookies) {
     return $http.put('/api/groups/' + id, {_id: $cookies.get('user_id')});
   };
 
-  this.createGroup = function (groupName, founderId) {
+  this.postGroup = function (groupName, founderId) {
     return $http.post('api/groups/', {groupname: groupName, user_id: founderId})
       .then(function (response) {
         console.log('successfully added event');
