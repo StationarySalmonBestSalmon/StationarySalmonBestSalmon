@@ -1,8 +1,11 @@
 <h1>Create New Group</h1>
 <div>
-  <form name="groupForm" ng-submit=submitForm(group.name) novalidate>
-    <input name="groupName" type="text" placeholder="Group Name" ng-minlength="3" ng-model="group.name" required>
+  <form name="groupForm" ng-submit=submitForm(group.name) novalidate class="form-inline">
+    <div class="form-group" ng-class="{'has-error': groupForm.groupName.$invalid && groupForm.groupName.$touched}">
+      <input name="groupName" class="form-control" type="text" placeholder="Group Name" ng-minlength="3" ng-model="group.name" required>
+    </div>
     <!-- HAVE TO ADD USER_ID AS SECOND ARGUMENT -->
-    <input type="submit" ng-disabled="groupForm.$invalid">
+    <input type="submit" ng-disabled="groupForm.$invalid" class="btn btn-default">
   </form>
+  <p ng-show="groupForm.groupName.$invalid && groupForm.groupName.$touched">Group name must be 3 characters or longer.</p>
 </div>

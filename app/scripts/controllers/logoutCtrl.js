@@ -1,11 +1,13 @@
 app
-  .controller('LogoutCtrl', ['$scope','$cookies','$location',
-   function ($scope, $cookies, $location) {
+  .controller('LogoutCtrl', ['$scope','$cookies','$location', '$rootScope',
+   function ($scope, $cookies, $location, $rootScope) {
     $scope.logout = function() {
       // Delete session information
       $cookies.remove('token');
-      $cookies.remove('user'); 
-      $location.path('/login');     
+      $cookies.remove('user_id');
+      $cookies.remove('user');
+      $rootScope.token = undefined;
+      $location.path('/login');
     };
     $scope.logout();
   }]);

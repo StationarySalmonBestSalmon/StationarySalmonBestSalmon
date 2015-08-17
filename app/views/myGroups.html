@@ -1,6 +1,6 @@
 <h1>My Groups</h1>
 <div>
-  <a ui-sref="groupForm">Create New Group</a>
+  <a ui-sref="groupForm">Create New Group</a><br><br>
   <div ng-repeat="group in groups">
     <a ui-sref="group({id: group._id})">{{group.groupname}}</a>
   </div>

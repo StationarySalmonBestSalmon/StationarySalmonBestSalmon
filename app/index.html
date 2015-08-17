@@ -31,11 +31,11 @@
         <ul class="nav navbar-nav">
           <li ng-class="{active: isActive('/')}"><a ui-sref="home">Event Feed</a></li>
           <li ng-class="{active: isActive('/group')}"><a ui-sref="myGroups">My Groups</a></li>
-          <li ng-class="{active: isActive('/user')}"><a ui-sref="user">User</a></li> <!--This needs to be edited to go to the signed-in user's page-->
-          <!-- <li ng-class="{active: isActive('/signup')}"><a ui-sref="signup">Sign up</a></li> -->
-          <!-- <li ng-class="{active: isActive('/login')}"><a ui-sref="login">Log in</a></li> -->
+          <li ng-class="{active: isActive('/user')}"><a ui-sref="user({id: user_id})">User</a></li>
           <li><a ui-sref="createEvent">Create Event</a></li>
-          <li><a ui-sref="logout">Log out</a></li>
+          <li ng-class="{active: isActive('/signup')}" ng-hide="token"><a ui-sref="signup">Sign up</a></li>
+          <li ng-class="{active: isActive('/login')}" ng-hide="token" ><a ui-sref="login">Log in</a></li>
+          <li><a ui-sref="logout" ng-hide="!token">Log out</a></li>
         </ul>
 
       </div>

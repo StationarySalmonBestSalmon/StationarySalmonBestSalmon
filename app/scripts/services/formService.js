@@ -4,7 +4,7 @@ app.service('FormService', ['$http', function($http) {
       .then(function (response) {
         // on success
         console.log('successfully added user');
-        return response.data.token;
+        return response.data;
       }, function (response) {
         // on failure
         console.log('failed to add user');
