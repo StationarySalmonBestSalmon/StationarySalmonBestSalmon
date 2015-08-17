@@ -1,8 +1,8 @@
-app.controller('EventController', ['$scope', 'EventService', 'UserService', 'CommentService', '$stateParams','$cookies',
-  function($scope, EventService, UserService, CommentService, $stateParams, $cookies) {
-
+app
+  .controller('EventController', ['$scope', '$stateParams','$cookies', 'ElectEventAPI',
+  function($scope, $stateParams, $cookies, ElectEventAPI) {
     var populateEventData = function(){
-      EventService.get($stateParams.id).then(function(response) {
+      ElectEventAPI.getEvent($stateParams.id).then(function(response) {
         var data = response.data;
         data.groupSize = data.group.members.length;
         $scope.data = data;
@@ -13,7 +13,7 @@ app.controller('EventController', ['$scope', 'EventService', 'UserService', 'Com
       })
       .then(function(){
         $scope.event.comments.forEach(function(comment){
-          UserService.get(comment.creator).then(function(response){
+          ElectEventAPI.getUser(comment.creator).then(function(response){
             comment.creator = response.data.username;
           });
         });
@@ -32,7 +32,7 @@ app.controller('EventController', ['$scope', 'EventService', 'UserService', 'Com
           "event_id": event_id
         };
 
-        CommentService.post(comment).then(function(data){
+        ElectEventAPI.postComment(comment).then(function(data){
           $scope.comment_text = '';
           populateEventData();
         });
@@ -52,7 +52,7 @@ app.controller('EventController', ['$scope', 'EventService', 'UserService', 'Com
         $scope.event.upvoters.splice($scope.event.upvoters.indexOf($scope.user_id), 1);
         $scope.event.votes -= 1;
       }
-      EventService.put($scope.event).then(function(data) {
+      ElectEventAPI.updateEvent($scope.event).then(function(data) {
         $scope.event.votes = data.data.votes;
       });
     };
@@ -70,7 +70,7 @@ app.controller('EventController', ['$scope', 'EventService', 'UserService', 'Com
         $scope.event.downvoters.splice($scope.event.downvoters.indexOf($scope.user_id), 1);
         $scope.event.votes += 1;
       }
-      EventService.put($scope.event).then(function(data) {
+      ElectEventAPI.updateEvent($scope.event).then(function(data) {
         $scope.event.votes = data.data.votes;
       });
     };

@@ -1,13 +1,13 @@
 app
-  .controller('loginCtrl', ['$scope', 'UserService', '$location', '$cookies', '$rootScope', '$window',
-    function($scope, UserService, $location, $cookies, $rootScope, $window) {
+  .controller('loginCtrl', ['$scope', '$location', '$cookies', '$rootScope', '$window', 'ElectEventAPI',
+    function($scope, $location, $cookies, $rootScope, $window, ElectEventAPI) {
 
     $scope.login = function(){
       var user = {
         username: $scope.username,
         password: $scope.password
       };
-      UserService.login(user).then(function(response){
+      ElectEventAPI.login(user).then(function(response){
         $cookies.put('user_id',response.data.user_id);
         $cookies.put('token',response.data.token);
         $rootScope.token = response.data.token;
