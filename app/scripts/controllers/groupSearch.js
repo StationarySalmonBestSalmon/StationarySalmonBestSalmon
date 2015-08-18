@@ -1,6 +1,6 @@
-app.
-  controller('groupSearch', ['$scope', 'getGroups', function ($scope, getGroups) {
-    getGroups.getMyGroups().then(function (response) {
+app
+  .controller('groupSearch', ['$scope', 'ElectEventAPI', function ($scope, ElectEventAPI) {
+    ElectEventAPI.getAllGroups().then(function (response) {
       $scope.groups = response.data;
     });
   }]);
