@@ -1,6 +1,7 @@
 app
   .service('ElectEventAPI', ['$http', '$cookies', function ($http, $cookies) {
 
+  // COMMENTS
   this.getComment = function (commentId) {
     return $http.get('api/comments/' + commentId);
   };
@@ -9,6 +10,7 @@ app
     return $http.post('api/comments/', comment);
   };
 
+  // EVENTS
   this.getAllEvents = function () {
     return $http.get('/api/events');
   };
@@ -31,6 +33,7 @@ app
       });
   };
 
+  // AUTHENTICATION
   this.getUser = function (id) {
     return $http.get('/api/users/' + id);
   };
@@ -49,6 +52,7 @@ app
       });
   };
 
+  // GROUPS
   this.getAllGroups = function () {
     return $http.get('/api/groups');
   };
