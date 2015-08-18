@@ -25,4 +25,4 @@
   Before ElectEvent I did nothing, now with ElectEvent I have friends!
 
 ## Closing and Call to Action ##
-  Sign up today, and start joining groups and <voting class=""></voting>
+  Sign up today, and start joining groups and going to events!
