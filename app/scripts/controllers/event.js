@@ -17,8 +17,6 @@ app
             });
           });
         });
-
-        setTimeout(function () {console.log($scope.event)}, 2000);
       };
 
       $scope.postComment = function(){
