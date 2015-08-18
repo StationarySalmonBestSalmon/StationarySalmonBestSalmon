@@ -25,4 +25,5 @@ app
           event.creator = user.username;
         });
       });
+    });
 }]);
