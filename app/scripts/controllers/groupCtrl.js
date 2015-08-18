@@ -1,7 +1,7 @@
 app.
-  controller('groupCtrl', ['$scope', '$stateParams', '$cookies', '$window', 'getGroups','UserService', 
+  controller('groupCtrl', ['$scope', '$stateParams', '$cookies', '$window', 'getGroups','UserService',
     function ($scope, $stateParams, $cookies, $window, getGroups, UserService) {
-    
+
     var contains = function (array, property, target) {
       return array.reduce(function (prev, curr) {
         return prev ? prev : (curr[property] === target);
@@ -21,7 +21,9 @@ app.
       $scope.data.events.forEach(function(event){
         UserService.get(event.creator).then(function(response){
           var user = response.data;
+          event.userId = user._id;
           event.creator = user.username;
+
         });
       });
     });

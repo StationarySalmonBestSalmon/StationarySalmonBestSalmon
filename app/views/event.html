@@ -1,9 +1,9 @@
 <!-- event name -->
 <h1 class="round-edge" ng-class="{'winner': event.votes / event.groupSize > .6}">{{ event.title }}</h1>
 <div class="upvote-btns">
-  <span ng-click="upvote()" class="fa fa-thumbs-up fa-lg" ng-class="{voted: upvoters.indexOf(user_id) >= 0}"></span><br>
+  <span ng-click="upvote()" class="fa fa-thumbs-up fa-lg" ng-class="{voted: event.upvoters.indexOf(user_id) >= 0}"></span><br>
   <p class="votes">{{ event.votes }} votes</p>
-  <span ng-click="downvote()" class="fa fa-thumbs-down fa-lg" ng-class="{voted: downvoters.indexOf(user_id) >= 0}"></span>
+  <span ng-click="downvote()" class="fa fa-thumbs-down fa-lg" ng-class="{voted: event.downvoters.indexOf(user_id) >= 0}"></span>
 </div>
 
 <!-- group -->
