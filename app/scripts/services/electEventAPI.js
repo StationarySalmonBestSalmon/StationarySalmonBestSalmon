@@ -1,4 +1,5 @@
-app.service('ElectEventAPI', ['$http', '$cookies', function ($http, $cookies) {
+app
+  .service('ElectEventAPI', ['$http', '$cookies', function ($http, $cookies) {
 
   this.getComment = function (commentId) {
     return $http.get('api/comments/' + commentId);
@@ -8,7 +9,7 @@ app.service('ElectEventAPI', ['$http', '$cookies', function ($http, $cookies) {
     return $http.post('api/comments/', comment);
   };
 
-  this.getAllEvents = function () { // never used
+  this.getAllEvents = function () {
     return $http.get('/api/events');
   };
 
