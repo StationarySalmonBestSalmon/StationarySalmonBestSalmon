@@ -2,7 +2,11 @@
 var mongoose = require( 'mongoose' ); 
 
 // Build the connection string 
-var dbURI = 'mongodb://localhost/electevent'; 
+
+var dbURI =
+process.env.MONGOLAB_URI ||
+process.env.MONGOHQ_URL ||
+'mongodb://localhost/electevent';
 
 // Create the database connection 
 var db = mongoose.connect(dbURI); 
